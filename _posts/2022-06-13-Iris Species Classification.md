@@ -119,4 +119,4 @@ print(y_train)
 # create a scatter matrix from the dataframe, color by y_train
 grr = pd.plotting.scatter_matrix(iris_dataframe, c=y_train, figsize=(15, 15), marker='o', hist_kwds={'bins': 20}, s=60, alpha=.8)
 ```
-![Iris](/assets/images/irispairplot.jpg)
+![Iris](/assets/images/irispairplot.png)
