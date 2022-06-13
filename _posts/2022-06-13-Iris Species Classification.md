@@ -165,8 +165,8 @@ print("Test set score: {:.2f}".format(knn.score(X_test, y_test)))
 ```md
 Test set predictions:
  [2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0]
-Test set score: 1.00
-Test set score: 1.00
+Test set score: 0.98
+Test set score: 0.98
 ```
 **Conclusion**
-For this model, the test set accuracy is about 1.00, which means we made the right prediction for 100% of the irises in the test set. This high level of accuracy means that ourmodel may be trustworthy enough to use!
+For this model, the test set accuracy is about 0.98, which means we made the right prediction for 98% of the irises in the test set. This high level of accuracy means that ourmodel may be trustworthy enough to use!
