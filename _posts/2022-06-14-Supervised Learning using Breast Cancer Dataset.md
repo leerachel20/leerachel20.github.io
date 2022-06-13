@@ -20,3 +20,8 @@ person’s annual income from their education, their age, and where they live is
 example of a regression task. When predicting income, the predicted value is an
 amount, and can be any number in a given range.
 
+```python
+from sklearn.datasets import load_breast_cancer
+cancer = load_breast_cancer()
+print("cancer.keys(): \n{}".format(cancer.keys()))
+```
