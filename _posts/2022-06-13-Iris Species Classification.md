@@ -1,7 +1,13 @@
 ---
 title: "Iris Species Classification"
+mathjax: true
 layout: post
+categories:
+  - github
+  - website
 ---
+
+![Iris](/assets/iris.jpg)
 
 ## Data Set Information ##
 
