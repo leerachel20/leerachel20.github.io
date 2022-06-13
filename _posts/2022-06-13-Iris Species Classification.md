@@ -46,3 +46,17 @@ Target names: ['setosa' 'versicolor' 'virginica']
 Feature names:
  ['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)', 'petal width (cm)']
 ```
+
+```python
+print("Type of data:", type(iris_dataset['data']))
+
+print("Shape of data:", iris_dataset['data'].shape)
+print("Shape of target: {}".format(iris_dataset['target'].shape))
+```
+```md
+Type of data: <class 'numpy.ndarray'>
+Shape of data: (150, 4)
+Shape of target: (150,)
+```
+
+We see that the array contains measurements for 150 different flowers. `target` is a one-dimensional array, with one entry per flower.
