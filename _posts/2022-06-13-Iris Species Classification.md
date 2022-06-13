@@ -7,7 +7,7 @@ categories:
   - website
 ---
 
-![Iris](/assets/iris.jpg)
+![Iris](/assets/images/iris.jpg)
 
 ## Data Set Information ##
 
