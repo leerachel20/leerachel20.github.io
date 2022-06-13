@@ -168,5 +168,5 @@ Test set predictions:
 Test set score: 0.98
 Test set score: 0.98
 ```
-**Conclusion**
+### **Conclusion**
 For this model, the test set accuracy is about 0.98, which means we made the right prediction for 98% of the irises in the test set. This high level of accuracy means that ourmodel may be trustworthy enough to use!
