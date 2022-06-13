@@ -60,3 +60,45 @@ Shape of target: (150,)
 ```
 
 We see that the array contains measurements for 150 different flowers. `target` is a one-dimensional array, with one entry per flower.
+
+```python
+print("Target:\n{}".format(iris_dataset['target']))
+```
+```md
+Target:
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2
+ 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ 2 2]
+```
+0 means setosa, 1 means versicolor, and 2 means virginica.
+
+
+### Training and Testing Data
+First, we need to assess the model performance. we show it new data (data that it hasn’t seen before) for which we have labels. This is usually done by splitting the labeled data we have collected into two parts. One part of the data is used to build our machine learning model, and is called the training data. The rest of the data will be used to assess how well the model works; this is called the test data.
+
+The **`train_test_split`** function under **`scikit-learn`** will extract 75% of the rows in the data as the training set, together with the corresponding labels for this data. The remaining 25% of the data, together with the remaining labels, is declared as the test set.
+
+In `scikit-learn`, data is usually denoted with a capital X (two-dimensional array), while labels are denoted by a lowercase y (one-dimensional array - a vector).
+
+Here, I am splitting 20% of the data as training set, `test_size = 0.20`.
+
+```python
+from sklearn.model_selection import train_test_split
+X = iris_dataset['data']
+y = iris_dataset['target']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20, random_state = 0)
+
+print("X_train shape: {}".format(X_train.shape))
+print("y_train shape: {}".format(y_train.shape))
+
+print("X_test shape: {}".format(X_test.shape))
+print("y_test shape: {}".format(y_test.shape))
+```
+```md
+X_train shape: (120, 4)
+y_train shape: (120,)
+X_test shape: (30, 4)
+y_test shape: (30,)
+```
