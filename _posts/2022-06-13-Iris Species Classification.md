@@ -102,3 +102,21 @@ y_train shape: (120,)
 X_test shape: (30, 4)
 y_test shape: (30,)
 ```
+
+### Data Inspection
+With 4 features included in the dataset, we will use the *pair plot* to inspect the data through visualization. 
+```python
+iris_dataframe = pd.DataFrame(X_train, columns=iris_dataset.feature_names)
+print(y_train)
+```
+```md
+[2 1 0 2 2 1 0 1 1 1 2 0 2 0 0 1 2 2 2 2 1 2 1 1 2 2 2 2 1 2 1 0 2 1 1 1 1
+ 2 0 0 2 1 0 0 1 0 2 1 0 1 2 1 0 2 2 2 2 0 0 2 2 0 2 0 2 2 0 0 2 0 0 0 1 2
+ 2 0 0 0 1 1 0 0 1 0 2 1 2 1 0 2 0 2 0 0 2 0 2 1 1 1 2 2 1 1 0 1 2 2 0 1 1
+ 1 1 0 0 0 2 1 2 0]
+```
+```python
+# create a scatter matrix from the dataframe, color by y_train
+grr = pd.plotting.scatter_matrix(iris_dataframe, c=y_train, figsize=(15, 15), marker='o', hist_kwds={'bins': 20}, s=60, alpha=.8)
+```
+![Iris](/assets/images/irispairplot.jpg)
