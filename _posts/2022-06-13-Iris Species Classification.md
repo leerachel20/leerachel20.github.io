@@ -120,3 +120,18 @@ print(y_train)
 grr = pd.plotting.scatter_matrix(iris_dataframe, c=y_train, figsize=(15, 15), marker='o', hist_kwds={'bins': 20}, s=60, alpha=.8)
 ```
 ![Iris](/assets/images/irispairplot.png)
+
+From the plots, we can see that the three classes seem to be relatively well separated using the sepal and petal measurements. This means that a machine learning model
+will likely be able to learn to separate them.
+
+### **First Model: *k*-Nearest Neighbors**
+
+The k-nearest neighbors (KNN) algorithm is a simple, easy-to-implement *supervised* machine learning algorithm that can be used to solve both classification and regression problems. The KNN algorithm assumes that similar things exist in close proximity. In other words, similar things are near to each other.
+
+Building the *k*-nearest neighbors model only consists of storing the training set. To make a prediction for a new data point, the algorithm finds the point in the training set that is closest to the new point. Then it assigns the label of this training point to the new data point. 
+
+```python
+from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier(n_neighbors=1)
+knn.fit(X_train, y_train)
+```
