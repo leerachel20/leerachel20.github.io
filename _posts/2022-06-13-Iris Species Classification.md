@@ -29,5 +29,20 @@ The data we will use for this example is the Iris dataset, a classical dataset i
 ```python
 from sklearn.datasets import load_iris
 iris_dataset = load_iris()
+
+print("Keys of iris_dataset:\n", iris_dataset.keys())
+```
+```md
+Keys of iris_dataset:
+ dict_keys(['data', 'target', 'frame', 'target_names', 'DESCR', 'feature_names', 'filename', 'data_module'])
 ```
 
+```python
+print("Target names:", iris_dataset['target_names'])
+print("Feature names:\n", iris_dataset['feature_names'])
+```
+```md
+Target names: ['setosa' 'versicolor' 'virginica']
+Feature names:
+ ['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)', 'petal width (cm)']
+```
