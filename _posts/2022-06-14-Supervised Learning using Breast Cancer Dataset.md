@@ -1,3 +1,12 @@
+---
+title: "Supervised Learning Model on Breast Cancer Dataset"
+mathjax: true
+layout: post
+categories:
+  - github
+  - website
+---
+
 # Supervised Learning
 Supervised learning is used whenever we want to predict a certain
 outcome from a given input, and we have examples of input/output pairs. We build a
