@@ -25,3 +25,7 @@ from sklearn.datasets import load_breast_cancer
 cancer = load_breast_cancer()
 print("cancer.keys(): \n{}".format(cancer.keys()))
 ```
+```md
+cancer.keys(): 
+dict_keys(['data', 'target', 'frame', 'target_names', 'DESCR', 'feature_names', 'filename', 'data_module'])
+```
