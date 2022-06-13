@@ -135,3 +135,38 @@ from sklearn.neighbors import KNeighborsClassifier
 knn = KNeighborsClassifier(n_neighbors=1)
 knn.fit(X_train, y_train)
 ```
+**Making Predictions**: Imagine we found an iris in the wild with a sepal length of 5 cm, a sepal width of 2.9 cm, a petal length of 1 cm, and a petal width of 0.2 cm. What species of iris would this be?
+
+```python
+X_new = np.array([[5, 2.9, 1, 0.2]])
+print("X_new.shape: {}".format(X_new.shape))
+
+prediction = knn.predict(X_new)
+print("Prediction: {}".format(prediction))
+print("Predicted target name: {}".format(
+iris_dataset['target_names'][prediction]))
+```
+```md
+X_new.shape: (1, 4)
+Prediction: [0]
+Predicted target name: ['setosa']
+```
+
+Our model predicts that this new iris belongs to the class 0, meaning its species is setosa. But how do we know whether we can trust our model? We don’t know the correct species of this sample, which is the whole point of building the model.
+
+### *Model Evaluation*
+This is where the test set that we created earlier comes in. This data was not used to build the model, but we do know what the correct species is for each iris in the test set. Therefore, we can make a prediction for each iris in the test data and compare it against its label (the known species). We can measure how well the model works by computing the accuracy, which is the fraction of flowers for which the right species was predicted:
+```python
+y_pred = knn.predict(X_test)
+print("Test set predictions:\n {}".format(y_pred))
+print("Test set score: {:.2f}".format(np.mean(y_pred == y_test)))
+print("Test set score: {:.2f}".format(knn.score(X_test, y_test)))
+```
+```md
+Test set predictions:
+ [2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0]
+Test set score: 1.00
+Test set score: 1.00
+```
+**Conclusion**
+For this model, the test set accuracy is about 1.00, which means we made the right prediction for 100% of the irises in the test set. This high level of accuracy means that ourmodel may be trustworthy enough to use!
