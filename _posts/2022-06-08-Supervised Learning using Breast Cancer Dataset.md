@@ -91,3 +91,76 @@ One of the **strengths** of k-NN is that the model is very easy to understand, a
 One of the **weaknesses** of k-NN is that When using the k-NN algorithm, it’s important to preprocess your data. This approach often does not perform well on datasets with many features (hundreds or more), and it does particularly badly with datasets where most features are 0 most of the time (so-called sparse datasets).
 
 Therefore, while the nearest k-neighbors algorithm is easy to understand, ***it is not often used in practice***, due to prediction being slow and its inability to handle many features. The method we discuss next has neither of these drawbacks.
+
+## Linear Regression (aka ordinary least squares) Models
+Linear models make a prediction using a linear function of the input features. Linear regression, or ordinary least squares (OLS), is the simplest and most classic linear method for regression. Linear regression finds the parameters that minimize the **mean squared error** between predictions and the true regression targets, y, on the training set. The mean squared error is the sum of the squared differencesnbetween the predictions and the true values. Linear regression has no parameters, which is a benefit, but **it also has no way to control model complexity**.
+
+```python
+from sklearn.linear_model import LinearRegression
+lin_reg = LinearRegression().fit(X_train, y_train)
+
+print("Training set score: {:.2f}".format(lin_reg.score(X_train, y_train)))
+print("Test set score: {:.2f}".format(lin_reg.score(X_test, y_test)))
+
+print("lin_reg.coef_: {}".format(lin_reg.coef_))
+print("lin_reg.intercept_: {}".format(lin_reg.intercept_))
+```
+```md
+Training set score: 0.78
+Test set score: 0.75
+lin_reg.coef_: [ 2.22681451e-01 -2.21641588e-03 -1.92758850e-02 -7.73163460e-04
+ -1.76833636e-01  3.91229857e+00 -1.05795513e+00 -2.09565671e+00
+ -5.30193958e-02  1.72639334e+00 -5.26019239e-01  1.44956000e-02
+  3.19946586e-02  1.04006789e-03 -1.46111718e+01 -3.08559596e-01
+  4.69096220e+00 -1.49353369e+01  6.83972184e-01 -2.11128905e+00
+ -1.76597890e-01 -9.51329814e-03 -1.46851407e-03  1.10971442e-03
+ -9.99186336e-01  1.15341813e-01 -7.62589750e-01  5.20310221e-01
+ -9.37896191e-01 -3.69768514e+00]
+lin_reg.intercept_: 2.8361789835644062
+```
+One of the most commonly used alternatives to standard linear regression is ridge regression.
+
+## Ridge Regression Models
+Ridge regression is a method of estimating the coefficients of multiple-regression models in scenarios where **linearly independent variables are highly correlated**. It is also a linear model for regression, so the formula it uses to make predictions is the same one used for OLS. In ridge regression, though, the coefficients are chosen not only so that they predict well on the training data, but also to fit an additional constraint. We also want the magnitude of coefficients to be as small as possible. Intuitively, this means **each feature should have as little effect on the outcome as possible** (which translates to having a small slope), while still predicting well. This constraint is an example of what is called regularization. Regularization means explicitly restricting a model to avoid overfitting. The particular kind used by ridge regression is known as ***L2 regularization***.
+
+```python
+from sklearn.linear_model import Ridge
+
+ridge = Ridge().fit(X_train, y_train)
+print("Training set score: {:.2f}".format(ridge.score(X_train, y_train)))
+print("Test set score: {:.2f}".format(ridge.score(X_test, y_test)))
+```
+```md
+Training set score: 0.74
+Test set score: 0.74
+```
+As you can see, the training set score of Ridge is lower than for LinearRegression, while the test set score is higher. This is consistent with our expectation. With linear regression, we were overfitting our data. Ridge is a more restricted model, so we are less likely to overfit.
+
+***Ridge is a more restricted model, so we are less likely to overfit. A less complex model means worse performance on the training set, but better generalization.***
+
+The Ridge model makes a trade-off between the simplicity of the model (near-zero coefficients) and its performance on the training set. How much importance the model places on simplicity versus training set performance can be specified by the user, using the alpha parameter.
+
+Alpha (α) can be any real-valued number between zero and infinity; the larger the value, the more aggressive the penalization is.
+
+Default alpha is `alpha = 1.0`. The optimum setting of alpha depends on the particular dataset we are using. Increasing alpha forces coefficients to move more toward zero, which decreases training set performance but might help generalization.
+
+```python
+ridge10 = Ridge(alpha=10).fit(X_train, y_train)
+print("Training set score: {:.2f}".format(ridge10.score(X_train, y_train)))
+print("Test set score: {:.2f}".format(ridge10.score(X_test, y_test)))
+```
+```md
+Training set score: 0.72
+Test set score: 0.72
+```
+Decreasing alpha allows the coefficients to be less restricted. For very small values of alpha, coefficients are barely restricted at all, and we end up with a model that resembles LinearRegression.
+
+```python
+ridge01 = Ridge(alpha=0.1).fit(X_train, y_train)
+print("Training set score: {:.2f}".format(ridge01.score(X_train, y_train)))
+print("Test set score: {:.2f}".format(ridge01.score(X_test, y_test)))
+```
+```md
+Training set score: 0.76
+Test set score: 0.75
+```
