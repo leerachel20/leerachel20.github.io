@@ -76,7 +76,7 @@ plt.xlabel('n_neighbors')
 plt.title('Comparison of training and test accuracy as a function of n_neighbors')
 plt.legend()
 ```
-![trainingtestingcomparison](/assets/images/image2_1.png)
+![trainingtestingcomparison](/assets/images/post2/image2_1.png)
 
 The plot shows the training and test set accuracy on the y-axis against the setting of n_neighbors on the x-axis. While real-world plots are rarely very smooth, we can still recognize some of the characteristics of overfitting and underfitting.
 
@@ -164,3 +164,16 @@ print("Test set score: {:.2f}".format(ridge01.score(X_test, y_test)))
 Training set score: 0.76
 Test set score: 0.75
 ```
+```python
+plt.plot(ridge.coef_, 's', label="Ridge alpha=1")
+plt.plot(ridge10.coef_, '^', label="Ridge alpha=10")
+plt.plot(ridge01.coef_, 'v', label="Ridge alpha=0.1")
+plt.plot(lin_reg.coef_, 'o', label="LinearRegression")
+plt.xlabel("Coefficient index")
+plt.ylabel("Coefficient magnitude")
+plt.title("Comparing coefficient magnitudes for ridge regression with different values of alpha and linear regression")
+plt.hlines(0, 0, len(lin_reg.coef_))
+plt.ylim(-17, 8)
+plt.legend()
+```
+![comparecoeffs_ridge](/assets/images/post2/image2_2.png)
