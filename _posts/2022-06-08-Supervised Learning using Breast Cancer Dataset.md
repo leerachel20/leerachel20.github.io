@@ -177,3 +177,14 @@ plt.ylim(-17, 8)
 plt.legend()
 ```
 ![comparecoeffs_ridge](/assets/images/post2/image2_2.png)
+
+In practice, ***ridge regression is usually the first choice between these two models***. However, if you have a large amount of features and expect only a few of them to be important, Lasso might be a better choice.
+
+## Logistic Regression and Linear SVC
+By default, both models apply an L2 regularization, in the same way that Ridge does for regression.
+
+Also, for both LogisticRegression and LinearSVC, the trade-off parameter that determines the strength of the regularization is called **C**, and **higher values of C correspond to less regularization** (the inverse of the regularization strength). In other words, when you use a high value for the parameter C, Logistic Regression and LinearSVC try to fit the training set as best as possible, while with low values of the parameter C, the models put more emphasis on finding a coefficient vector (w) that is close to zero.
+
+There is another interesting aspect of how the parameter C acts. Using low values of C will cause the algorithms to try to adjust to the “majority” of data points, while using a higher value of C stresses the importance that each individual data point be classified correctly.
+
+By default, C = 1:
