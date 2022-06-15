@@ -3,7 +3,7 @@ layout: page
 title: "Machine Learning"
 ---
 
-## [Supervised Learning Application: Breast Cancer Dataset](https://leerachel20.github.io/Iris-Species-Classification/) ##
+## [Supervised Learning Application: Breast Cancer Dataset](https://leerachel20.github.io/Supervised-Learning-using-Breast-Cancer-Dataset) ##
 Classification and data mining methods are an effective way to classify data. Especially in medical field, where those methods are widely used in diagnosis and analysis to make decisions.
 
 ## [First Application: Iris Species Classification](https://leerachel20.github.io/Iris-Species-Classification/) ##
