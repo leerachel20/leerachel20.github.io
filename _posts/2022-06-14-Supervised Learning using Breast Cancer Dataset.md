@@ -76,3 +76,4 @@ plt.xlabel('n_neighbors')
 plt.title('Comparison of training and test accuracy as a function of n_neighbors')
 plt.legend()
 ```
+![trainingtestingcomparison](/assets/images/image2_1.png)
